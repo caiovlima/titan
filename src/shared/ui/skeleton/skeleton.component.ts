@@ -9,9 +9,9 @@ import { cn } from '@shared/utils/cn';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkeletonComponent {
-  readonly className = input('', { alias: 'class' });
+  readonly class = input('');
 
   classes(): string {
-    return cn('animate-pulse rounded-md bg-muted', this.className());
+    return cn('animate-pulse rounded-md bg-muted', this.class());
   }
 }

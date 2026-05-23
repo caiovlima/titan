@@ -15,14 +15,18 @@ export class ButtonComponent {
   readonly type = input<'button' | 'submit' | 'reset'>('button');
   readonly disabled = input(false);
   readonly loading = input(false);
-  readonly className = input('', { alias: 'class' });
+
+  readonly class = input('');
 
   readonly pressed = output<void>();
 
   classes(): string {
     return cn(
-      buttonVariants({ variant: this.variant(), size: this.size() }),
-      this.className(),
+      buttonVariants({
+        variant: this.variant(),
+        size: this.size(),
+      }),
+      this.class(),
     );
   }
 

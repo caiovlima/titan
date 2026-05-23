@@ -16,6 +16,8 @@
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.{ts,html,scss,json}\"",
     "api:generate": "orval",
+    "clean:modules": "node scripts/clean-modules.mjs",
+    "reinstall": "node scripts/clean-modules.mjs && npm ci",
     "serve:ssr:titan": "node dist/titan/server/server.mjs",
     "prepare": "husky"
   },

@@ -7,6 +7,7 @@ import type { AuthUser } from '@core/auth/types/auth-user.interface';
 export class FirebaseAdapter implements BackendAdapter {
   readonly name = 'firebase';
 
+  
   signIn(email: string, _password: string): Observable<AuthUser> {
     if (!email) {
       return throwError(() => new Error('Firebase adapter not configured'));
@@ -15,6 +16,7 @@ export class FirebaseAdapter implements BackendAdapter {
       id: 'firebase-user',
       email,
       name: email.split('@')[0],
+      password: _password, // Not used, just for demo purposes
       roles: ['user'],
       permissions: ['app:read'],
     });

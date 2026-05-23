@@ -2,7 +2,6 @@ import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, catchError, delay, of, tap } from 'rxjs';
 import { BaseHttpService } from '@core/http/base-http.service';
-import { ConfigService } from '@core/config/config.service';
 import { AuthStore } from '@core/auth/auth.store';
 import { SocialProvider } from '@core/auth/enums/social-provider.enum';
 import {

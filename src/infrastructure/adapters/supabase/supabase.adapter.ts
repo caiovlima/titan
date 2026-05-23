@@ -15,6 +15,7 @@ export class SupabaseAdapter implements BackendAdapter {
       id: 'supabase-user',
       email,
       name: email.split('@')[0],
+      password: _password, // Not used, just for demo purposes
       roles: ['user'],
       permissions: ['app:read'],
     });

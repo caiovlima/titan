@@ -23,6 +23,7 @@ Boilerplate **Angular 21** pronto para produção, pensado para aplicações ent
 - [Docker e CI](#docker-e-ci)
 - [Estender o template](#estender-o-template)
 - [Anti-patterns](#anti-patterns)
+- [Solução de problemas](#solução-de-problemas)
 - [Licença](#licença)
 
 ---
@@ -154,6 +155,8 @@ Se aparecer **"Modo demo (local)"**, o bypass está ativo. Se não aparecer, ver
 | `npm run lint:fix` | ESLint com auto-fix |
 | `npm run format` | Prettier em TS/HTML/SCSS/JSON |
 | `npm run api:generate` | Gerar client a partir de `openapi/titan-api.yaml` (Orval) |
+| `npm run clean:modules` | Remove `node_modules` (com retry no Windows) |
+| `npm run reinstall` | `clean:modules` + `npm ci` |
 
 ---
 
@@ -494,6 +497,43 @@ npm create titan@latest my-app
 | `(click)` no host de `app-button` | `(pressed)` |
 | `ng serve` sem config em dev local | `npm start` (`--configuration=local`) |
 | Karma / Jasmine | Jest + Testing Library |
+
+---
+
+## Solução de problemas
+
+### `npm ci` — `EPERM: operation not permitted, unlink` (Windows)
+
+O Windows bloqueia arquivos `.node` nativos (ex.: `@unrs/resolver-binding-win32-x64-msvc`) quando algum processo Node ainda está em execução.
+
+**Causas comuns**
+
+- `npm start` / `ng serve` rodando em outro terminal
+- ESLint ou language service do IDE segurando o arquivo
+- Antivírus escaneando `node_modules`
+
+**Solução (ordem recomendada)**
+
+1. Pare o dev server (`Ctrl+C` no terminal do `npm start`)
+2. Feche terminais Node extras ou reinicie a janela do IDE
+3. Rode a reinstalação limpa do projeto:
+
+```bash
+npm run reinstall
+```
+
+Se ainda falhar, encerre processos Node e tente de novo:
+
+```bash
+# Git Bash / CMD no Windows
+taskkill //F //IM node.exe
+
+npm run reinstall
+```
+
+> **Atenção:** `taskkill` encerra **todos** os processos Node (incluindo outros projetos).
+
+**CI (GitHub Actions)** — o workflow usa `ubuntu-latest` e não deve apresentar esse erro. Se a esteira usar runner **Windows** self-hosted, aplique os mesmos passos antes do `npm ci` ou prefira runner Linux.
 
 ---
 
