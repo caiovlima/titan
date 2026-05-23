@@ -1,0 +1,56 @@
+<div class="flex min-h-screen items-center justify-center bg-background p-6">
+  <div class="w-full max-w-md space-y-6 rounded-xl border border-border bg-card p-8 shadow-sm">
+    <div class="space-y-1 text-center">
+      <h1 class="text-2xl font-semibold tracking-tight">Titan</h1>
+      <p class="text-sm text-muted-foreground">Enterprise Angular template</p>
+    </div>
+
+    <form class="space-y-4" [formGroup]="facade.form" (ngSubmit)="facade.submit()">
+      <div class="space-y-2">
+        <label class="text-sm font-medium" for="email">Email</label>
+        <app-input id="email" type="email" placeholder="you@company.com" formControlName="email" />
+      </div>
+      <div class="space-y-2">
+        <label class="text-sm font-medium" for="password">Password</label>
+        <app-input id="password" type="password" placeholder="••••••••" formControlName="password" />
+      </div>
+
+      @if (auth.error(); as error) {
+        <p class="text-sm text-destructive" role="alert">{{ error }}</p>
+      }
+
+      <app-button type="submit" class="w-full" [loading]="facade.submitting()">
+        Sign in
+      </app-button>
+
+      <app-button
+        type="button"
+        variant="secondary"
+        class="w-full"
+        [loading]="facade.submitting()"
+        (pressed)="facade.enterWithDemoAccount()"
+      >
+        Entrar com conta demo
+      </app-button>
+    </form>
+
+    @if (config.isDemoAuthEnabled) {
+      <p class="rounded-md border border-border bg-muted/50 px-3 py-2 text-center text-xs text-muted-foreground">
+        Modo demo ({{ config.environment.name }}) — sem API externa.<br />
+        <code>admin@titan.dev</code> / <code>password123</code>
+      </p>
+    }
+
+    <div class="grid grid-cols-3 gap-2">
+      <app-button variant="outline" type="button" (pressed)="onSocialLogin(() => auth.loginWithGoogle())">
+        Google
+      </app-button>
+      <app-button variant="outline" type="button" (pressed)="onSocialLogin(() => auth.loginWithGitHub())">
+        GitHub
+      </app-button>
+      <app-button variant="outline" type="button" (pressed)="onSocialLogin(() => auth.loginWithMicrosoft())">
+        Microsoft
+      </app-button>
+    </div>
+  </div>
+</div>

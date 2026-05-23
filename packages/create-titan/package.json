@@ -1,0 +1,11 @@
+{
+  "name": "create-titan",
+  "version": "0.1.0",
+  "description": "Scaffold a Titan enterprise Angular application",
+  "bin": {
+    "create-titan": "./bin/create-titan.js"
+  },
+  "files": ["bin", "template"],
+  "keywords": ["angular", "enterprise", "template", "ssr", "spartan"],
+  "license": "MIT"
+}

@@ -1,0 +1,10 @@
+<input
+  [id]="id()"
+  [type]="type()"
+  [placeholder]="placeholder()"
+  [disabled]="isDisabled()"
+  [value]="value"
+  [class]="classes()"
+  (input)="onInput($event)"
+  (blur)="onTouched()"
+/>
