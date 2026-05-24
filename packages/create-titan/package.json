@@ -1,11 +1,37 @@
 {
   "name": "create-titan",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Scaffold a Titan enterprise Angular application",
   "bin": {
     "create-titan": "./bin/create-titan.js"
   },
-  "files": ["bin", "template"],
-  "keywords": ["angular", "enterprise", "template", "ssr", "spartan"],
-  "license": "MIT"
+  "preferGlobal": true,
+  "files": [
+    "bin",
+    "utils",
+    "template"
+  ],
+  "keywords": [
+    "angular",
+    "enterprise",
+    "template",
+    "ssr",
+    "spartan",
+    "scaffold",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caiovlima/titan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/caiovlima/titan/issues"
+  },
+  "homepage": "https://github.com/caiovlima/titan#readme",
+  "author": "Caio Lima",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
 }

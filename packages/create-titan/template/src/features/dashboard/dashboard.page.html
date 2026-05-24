@@ -1,0 +1,31 @@
+<section class="space-y-6 p-8">
+  <header class="flex items-center justify-between">
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight">Dashboard</h1>
+      <p class="text-muted-foreground">Welcome, {{ auth.user()?.name ?? 'User' }}</p>
+    </div>
+    <div class="flex gap-2">
+      <app-button variant="outline" (pressed)="theme.toggle()">Toggle theme</app-button>
+      <app-button variant="destructive" (pressed)="logout()">Logout</app-button>
+    </div>
+  </header>
+
+  <div class="grid gap-4 md:grid-cols-3">
+    <article class="rounded-lg border border-border bg-card p-6">
+      <h2 class="font-semibold">Signals state</h2>
+      <p class="mt-2 text-sm text-muted-foreground">SignalStateService ready for feature stores.</p>
+    </article>
+    <article class="rounded-lg border border-border bg-card p-6">
+      <h2 class="font-semibold">SSR + Hydration</h2>
+      <p class="mt-2 text-sm text-muted-foreground">Server-rendered with client hydration enabled.</p>
+    </article>
+    <article class="rounded-lg border border-border bg-card p-6">
+      <h2 class="font-semibold">RBAC</h2>
+      <p class="mt-2 text-sm text-muted-foreground">Guards, directives, and permission checks.</p>
+    </article>
+  </div>
+
+  <div *appHasPermission="'admin:write'" class="rounded-lg border border-dashed border-border p-4 text-sm">
+    Admin-only panel (requires <code>admin:write</code> permission)
+  </div>
+</section>

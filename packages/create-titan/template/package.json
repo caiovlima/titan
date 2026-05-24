@@ -27,7 +27,6 @@
     "clean:modules": "node scripts/clean-modules.mjs",
     "reinstall": "node scripts/clean-modules.mjs && npm ci",
     "serve:ssr:titan": "node dist/titan/server/server.mjs",
-    "titan:scaffold": "node packages/create-titan/bin/scaffold-feature.js",
     "prepare": "husky"
   },
   "lint-staged": {

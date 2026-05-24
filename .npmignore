@@ -1,0 +1,13 @@
+src/
+.angular/
+.git/
+dist/
+node_modules/
+.github/
+.gitignore
+docker-compose.yml
+Dockerfile
+jest.config.ts
+tsconfig.json
+angular.json
+README.md
