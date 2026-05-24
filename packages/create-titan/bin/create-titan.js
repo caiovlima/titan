@@ -57,7 +57,7 @@ try {
 // 3. Instalar dependências
 try {
   console.log('📥 Instalando dependências (isso pode levar alguns minutos)...\n');
-  execSync('npm install', { cwd: targetDir, stdio: 'inherit' });
+  execSync('npm install --legacy-peer-deps', { cwd: targetDir, stdio: 'inherit' });
   console.log('\n✅ Dependências instaladas\n');
 } catch (error) {
   console.error('❌ Erro ao instalar dependências:', error.message);

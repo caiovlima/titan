@@ -1,14 +1,8 @@
 {
-  "name": "titan",
-  "version": "0.2.0",
-  "description": "Enterprise Angular SSR Template",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/caiovlima/titan.git"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
+  "name": "{{projectName}}",
+  "version": "0.1.0",
+  "description": "Enterprise Angular SSR Application",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration=local",
@@ -26,7 +20,8 @@
     "api:generate": "orval",
     "clean:modules": "node scripts/clean-modules.mjs",
     "reinstall": "node scripts/clean-modules.mjs && npm ci",
-    "serve:ssr:titan": "node dist/titan/server/server.mjs",
+    "serve:ssr:app": "node dist/{{projectName}}/server/server.mjs",
+    "titan:scaffold": "node node_modules/create-titan/bin/scaffold-feature.js",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -38,8 +33,6 @@
       "prettier --write"
     ]
   },
-  "private": true,
-  "packageManager": "npm@11.13.0",
   "dependencies": {
     "@angular/cdk": "^21.2.12",
     "@angular/common": "^21.2.0",
@@ -47,57 +40,48 @@
     "@angular/core": "^21.2.0",
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
-    "@angular/platform-browser-dynamic": "^21.2.14",
     "@angular/platform-server": "^21.2.0",
     "@angular/router": "^21.2.0",
-    "@angular/ssr": "^21.2.12",
-    "@lucide/angular": "^1.16.0",
-    "@spartan-ng/brain": "^0.0.1-alpha.697",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "express": "^5.1.0",
-    "rxjs": "~7.8.0",
-    "tailwind-merge": "^3.6.0",
-    "tslib": "^2.3.0",
-    "tw-animate-css": "^1.4.0",
-    "zone.js": "^0.16.2"
+    "@angular/ssr": "^21.2.0",
+    "@ngrx/store": "^19.3.0",
+    "@ngrx/effects": "^19.3.0",
+    "express": "^5.0.1",
+    "rxjs": "^7.8.2",
+    "tslib": "^2.8.1",
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-eslint/builder": "^21.4.0",
-    "@angular-eslint/eslint-plugin": "^21.4.0",
-    "@angular-eslint/eslint-plugin-template": "^21.4.0",
-    "@angular-eslint/schematics": "^21.4.0",
-    "@angular-eslint/template-parser": "^21.4.0",
-    "@angular/build": "^21.2.12",
-    "@angular/cli": "^21.2.12",
+    "@angular-devkit/build-angular": "^21.2.0",
+    "@angular-eslint/builder": "^21.1.0",
+    "@angular-eslint/eslint-plugin": "^21.1.0",
+    "@angular-eslint/eslint-plugin-template": "^21.1.0",
+    "@angular-eslint/template-parser": "^21.1.0",
+    "@angular/cli": "^21.2.0",
     "@angular/compiler-cli": "^21.2.0",
-    "@eslint/js": "^10.0.1",
-    "@spartan-ng/cli": "^0.0.1-alpha.697",
-    "@tailwindcss/postcss": "^4.3.0",
-    "@testing-library/angular": "^19.3.0",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/express": "^5.0.1",
-    "@types/jest": "^30.0.0",
-    "@types/node": "^20.17.19",
-    "angular-eslint": "^21.4.0",
-    "eslint": "^10.4.0",
+    "@eslint/js": "^9.17.0",
+    "@spartan-ng/brain": "^0.4.1",
+    "@tailwindcss/typography": "^0.5.13",
+    "@testing-library/angular": "^18.0.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.9.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.17.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-jsdoc": "^50.4.3",
     "husky": "^9.1.7",
-    "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1",
-    "jest-preset-angular": "^16.1.5",
-    "lint-staged": "^17.0.5",
-    "msw": "^2.14.6",
-    "orval": "^8.12.3",
-    "postcss": "^8.5.15",
-    "prettier": "^3.8.1",
-    "tailwindcss": "^4.3.0",
-    "typescript": "~5.9.2",
-    "typescript-eslint": "^8.59.4"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^15.0.0",
+    "lint-staged": "^15.2.11",
+    "msw": "^2.6.11",
+    "orval": "^7.8.1",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^4.0.1",
+    "typescript": "^5.6.3"
   }
 }
